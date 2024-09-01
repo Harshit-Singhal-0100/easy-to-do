@@ -6,15 +6,17 @@
   padding: 10px 20px;
   background-color: #333;
   color: white;
-  height: 60px; /* Set fixed height for navbar */
+  height: 60px; /* Fixed height for the navbar */
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 1000; /* Ensure navbar is on top of other components */
 }
 
 .navbar-logo {
-  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .logo-img {
@@ -22,15 +24,14 @@
 }
 
 .navbar-title {
-  flex: 2;
+  flex: 1;
   text-align: center;
   font-size: 24px;
 }
 
 .navbar-links {
-  flex: 1;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
 }
 
 .nav-button {
@@ -42,6 +43,7 @@
   cursor: pointer;
   border-radius: 5px;
   font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .nav-button:hover {

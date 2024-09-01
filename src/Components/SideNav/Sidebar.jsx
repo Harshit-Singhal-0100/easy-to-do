@@ -17,7 +17,7 @@ const Sidebar = ({ onNoteSelect }) => {
 
   const handleDeleteNote = (id) => {
     deleteNote(id);
-    if (id === selectedNoteId) {
+    if (id) {
       onNoteSelect(null); // Deselect note if it's deleted
     }
   };

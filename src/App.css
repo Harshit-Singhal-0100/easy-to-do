@@ -1,11 +1,15 @@
 /* src/App.css */
 .App {
   display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden; /* Prevent scrollbars in the main container */
 }
 
 .main-content {
-  margin-left: 300px; /* Adjust based on sidebar width */
+  margin-left: 300px; /* Width of the sidebar */
   padding: 20px;
   flex: 1;
-  margin-top: 60px; /* To ensure content does not overlap with navbar */
+  overflow-y: auto; /* Allow scrolling within main content if needed */
+  background-color: #f5f5f5; /* Optional: background color for content area */
 }
