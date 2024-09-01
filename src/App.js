@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Navbar from './Components/Navbar/Navbar'; // Updated import path
+import Sidebar from './Components/SideNav/Sidebar'; // Updated import path
+import NoteEditor from './Components/NoteEditor/NoteEditor'; // Updated import path
+import { NoteProvider } from './context/NoteContext';
 import './App.css';
 
 function App() {
+  const [selectedNoteId, setSelectedNoteId] = useState(null);
+
+  const handleNoteSelect = (id) => {
+    setSelectedNoteId(id);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NoteProvider>
+      <div className="App">
+        <Navbar />
+        <Sidebar onNoteSelect={handleNoteSelect} />
+        <main className="main-content">
+          <NoteEditor noteId={selectedNoteId} />
+        </main>
+      </div>
+    </NoteProvider>
   );
 }
 

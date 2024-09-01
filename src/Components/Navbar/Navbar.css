@@ -1,0 +1,49 @@
+/* src/Components/Navbar/Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  height: 60px; /* Set fixed height for navbar */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  flex: 1;
+}
+
+.logo-img {
+  height: 40px;
+}
+
+.navbar-title {
+  flex: 2;
+  text-align: center;
+  font-size: 24px;
+}
+
+.navbar-links {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-button {
+  background-color: #555;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.nav-button:hover {
+  background-color: #777;
+}

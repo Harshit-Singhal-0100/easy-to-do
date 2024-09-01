@@ -1,0 +1,36 @@
+/* src/components/NoteEditor/NoteEditor.css */
+.note-editor {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .note-editor h2 {
+    margin-bottom: 10px;
+  }
+  
+  .note-editor .ql-container {
+    height: 300px;
+  }
+  
+  .note-editor input[type="file"] {
+    margin-top: 10px;
+  }
+  
+  .note-editor button {
+    margin-top: 10px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .note-editor button:hover {
+    background-color: #218838;
+  }
+  

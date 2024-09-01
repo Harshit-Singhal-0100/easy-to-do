@@ -1,0 +1,62 @@
+/* src/Components/SideNav/Sidebar.css */
+.sidebar {
+  width: 300px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  height: calc(100vh - 60px); /* Height minus the navbar height */
+  position: fixed;
+  top: 60px; /* Start below the navbar */
+  left: 0;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+.sidebar-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-item {
+  margin-bottom: 15px;
+}
+
+.sidebar-button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-button:hover {
+  background-color: #0056b3;
+}
+
+.notes-list {
+  margin-top: 20px;
+}
+
+.note-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.note-item button {
+  background: transparent;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+}
