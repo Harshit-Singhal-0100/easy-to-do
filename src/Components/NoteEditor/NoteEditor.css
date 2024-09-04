@@ -1,132 +1,365 @@
-.note-editor {
-  padding: 20px;
-}
-
-.note-title-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.save-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.save-button:hover {
-  background-color: #0056b3;
-}
-
-.tags-section {
-  margin-top: 20px;
-}
-
-.tags-toggle-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.tags-toggle-button:hover {
-  background-color: #0056b3;
-}
-
-.tags-container {
-  margin-top: 10px;
-}
-
-.tag-input {
-  padding: 5px;
-  margin-right: 10px;
-}
-
-.add-tag-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.add-tag-button:hover {
-  background-color: #0056b3;
-}
-
-.tags-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.tag-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 0;
-}
-
-.remove-tag-button {
-  background: none;
-  border: none;
-  color: #ff4d4d;
-  cursor: pointer;
-}
-
-.remove-tag-button:hover {
-  color: #ff1a1a;
-}
-
-.version-history {
-  margin-top: 20px;
-}
-
-.version-history ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.version-history li {
-  margin-bottom: 10px;
-}
-
-.version-history pre {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
+/* General Styles */
 .note-editor {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .note-title-input {
   font-size: 24px;
-  margin-bottom: 16px;
-  padding: 8px;
-  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
 }
 
-.save-button, .clear-button {
-  margin: 8px;
+.note-title-input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Buttons */
+.save-button,
+.clear-button,
+.add-drawing-button,
+.remove-drawing-button,
+.enhance-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.save-button:hover,
+.clear-button:hover,
+.add-drawing-button:hover,
+.remove-drawing-button:hover,
+.enhance-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.save-button:disabled,
+.clear-button:disabled,
+.add-drawing-button:disabled,
+.remove-drawing-button:disabled,
+.enhance-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Drawing Options */
+.drawing-options {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.drawing-options label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.drawing-options input[type="color"],
+.drawing-options input[type="number"] {
+  margin-right: 15px;
+}
+
+/* Drawable Area */
+.drawable-area {
+  margin: 20px 0;
+  position: relative;
+}
+
+.react-sketch-canvas {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Drawings Gallery */
+.drawings-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.drawing-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.drawing-item img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+}
+
+.drawing-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.remove-drawing-button,
+.enhance-button {
+  background-color: #dc3545;
+}
+
+.remove-drawing-button:hover,
+.enhance-button:hover {
+  background-color: #c82333;
+}
+
+.remove-drawing-button:disabled,
+.enhance-button:disabled {
+  background-color: #ccc;
+}
+
+/* Editor Buttons */
+.editor-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.editor-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.add-drawing-button,
+.save-button,
+.clear-button,
+.undo-button,
+.redo-button {
+  margin-right: 10px;
   padding: 8px 16px;
   font-size: 16px;
   cursor: pointer;
 }
 
-.drawable-area {
-  margin: 16px 0;
+.undo-button,
+.redo-button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+.ql-size-10px {
+  font-size: 10px;
 }
 
+.ql-size-12px {
+  font-size: 12px;
+}
+
+.ql-size-14px {
+  font-size: 14px;
+}
+
+.ql-size-16px {
+  font-size: 16px;
+}
+
+.ql-size-18px {
+  font-size: 18px;
+}
+
+.ql-size-24px {
+  font-size: 24px;
+}
+
+.ql-size-32px {
+  font-size: 32px;
+}
+
+.ql-size-48px {
+  font-size: 48px;
+}
+
+.ql-size-72px {
+  font-size: 72px;
+}
+/* NoteEditor.css */
+.ql-size-10px { font-size: 10px; }
+.ql-size-12px { font-size: 12px; }
+.ql-size-14px { font-size: 14px; }
+.ql-size-16px { font-size: 16px; }
+.ql-size-18px { font-size: 18px; }
+.ql-size-24px { font-size: 24px; }
+.ql-size-32px { font-size: 32px; }
+.ql-size-48px { font-size: 48px; }
+.ql-size-72px { font-size: 72px; }
+/* NoteEditor.css */
+
+/* Container for the note editor */
+.note-editor {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title input styling */
+.note-title-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+/* ReactQuill editor styling */
+.ReactQuill {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Toolbar customization */
+.ql-toolbar {
+  border: 1px solid #ddd;
+  border-radius: 4px 4px 0 0;
+  background-color: #fff;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Drawing options section styling */
+.drawing-options {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.drawing-options label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.drawing-options input[type="color"],
+.drawing-options input[type="number"] {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Drawable area styling */
+.drawable-area {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.drawable-area .react-sketch-canvas {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Editor buttons styling */
 .editor-buttons {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.editor-buttons button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.editor-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.editor-buttons .clear-button {
+  background-color: #dc3545;
+}
+
+.editor-buttons .clear-button:hover {
+  background-color: #c82333;
+}
+
+/* Drawings gallery styling */
+.drawings-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.drawing-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.drawing-item img {
+  max-width: 100%;
+  max-height: 200px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.drawing-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.drawing-buttons button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.drawing-buttons button:hover {
+  background-color: #218838;
+}
+
+.drawing-buttons .remove-drawing-button {
+  background-color: #dc3545;
+}
+
+.drawing-buttons .remove-drawing-button:hover {
+  background-color: #c82333;
+}
+
+/* Placeholder for empty note selection */
+.note-editor .empty-note {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
 }
