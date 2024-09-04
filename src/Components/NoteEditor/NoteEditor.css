@@ -1,41 +1,132 @@
-/* src/Components/NoteEditor/NoteEditor.css */
 .note-editor {
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: relative; /* Ensure it's positioned relative to the main content */
-  z-index: 1; /* Ensure it's below the sidebar and navbar */
-  max-width: 100%; /* Ensure it doesn’t overflow its container */
 }
 
-.note-editor h2 {
-  margin-bottom: 20px;
-  font-size: 28px;
-  color: #333;
-}
-
-.note-editor .ql-container {
-  height: 300px; /* Adjust height as needed */
-}
-
-.note-editor input[type="file"] {
-  margin-top: 10px;
-}
-
-.note-editor button {
-  margin-top: 10px;
-  background-color: #28a745;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
+.note-title-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-.note-editor button:hover {
-  background-color: #218838;
+.save-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
+
+.tags-section {
+  margin-top: 20px;
+}
+
+.tags-toggle-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tags-toggle-button:hover {
+  background-color: #0056b3;
+}
+
+.tags-container {
+  margin-top: 10px;
+}
+
+.tag-input {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.add-tag-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-tag-button:hover {
+  background-color: #0056b3;
+}
+
+.tags-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tag-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.remove-tag-button {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  cursor: pointer;
+}
+
+.remove-tag-button:hover {
+  color: #ff1a1a;
+}
+
+.version-history {
+  margin-top: 20px;
+}
+
+.version-history ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.version-history li {
+  margin-bottom: 10px;
+}
+
+.version-history pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.note-editor {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.note-title-input {
+  font-size: 24px;
+  margin-bottom: 16px;
+  padding: 8px;
+  width: 100%;
+}
+
+.save-button, .clear-button {
+  margin: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.drawable-area {
+  margin: 16px 0;
+}
+
+.editor-buttons {
+  display: flex;
+  justify-content: space-between;
 }

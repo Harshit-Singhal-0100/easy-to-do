@@ -16,10 +16,12 @@ function App() {
     <NoteProvider>
       <div className="App">
         <Navbar />
-        <Sidebar onNoteSelect={handleNoteSelect} />
-        <main className="main-content">
-          <NoteEditor noteId={selectedNoteId} />
-        </main>
+        <div className="content-wrapper">
+          <Sidebar onNoteSelect={handleNoteSelect} />
+          <main className="main-content">
+            <NoteEditor noteId={selectedNoteId} />
+          </main>
+        </div>
       </div>
     </NoteProvider>
   );

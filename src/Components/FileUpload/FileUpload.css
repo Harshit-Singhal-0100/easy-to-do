@@ -1,0 +1,31 @@
+.file-upload {
+    margin-top: 20px;
+  }
+  
+  .file-input {
+    margin-bottom: 10px;
+  }
+  
+  .file-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+  }
+  
+  .remove-button {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+  }
+  
+  .remove-button:hover {
+    color: #ff1a1a;
+  }
+  

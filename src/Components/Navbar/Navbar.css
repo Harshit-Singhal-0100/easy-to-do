@@ -1,22 +1,24 @@
-/* src/Components/Navbar/Navbar.css */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
   background-color: #333;
   color: white;
-  height: 60px; /* Fixed height for the navbar */
-  position: fixed;
-  top: 0;
-  left: 0;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
   width: 100%;
-  z-index: 1000; /* Ensure navbar is on top of other components */
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
 }
 
 .navbar-logo {
-  display: flex;
-  align-items: center;
+  flex: 1;
 }
 
 .logo-img {
@@ -24,28 +26,43 @@
 }
 
 .navbar-title {
-  flex: 1;
+  flex: 2;
+  font-size: 1.5em;
   text-align: center;
-  font-size: 24px;
 }
 
 .navbar-links {
+  flex: 1;
   display: flex;
-  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
 .nav-button {
-  background-color: #555;
-  border: none;
+  background-color: #4CAF50;
   color: white;
-  padding: 10px 20px;
-  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
   cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
   transition: background-color 0.3s ease;
 }
 
 .nav-button:hover {
-  background-color: #777;
+  background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+  .navbar-title {
+    font-size: 1.2em;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .nav-button {
+    width: 100%;
+  }
 }

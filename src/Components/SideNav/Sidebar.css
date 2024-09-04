@@ -1,73 +1,71 @@
-/* src/Components/SideNav/Sidebar.css */
 .sidebar {
-  width: 300px;
+  width: 250px;
   background-color: #f4f4f4;
-  padding: 20px;
-  height: calc(100vh - 60px); /* Full viewport height minus the navbar height */
-  position: fixed;
-  top: 60px; /* Start below the navbar */
-  left: 0;
+  padding: 10px;
   border-right: 1px solid #ddd;
-  overflow-y: auto;
-  z-index: 500; /* Ensure sidebar is below the navbar but above the content */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional: shadow for better separation */
 }
 
 .sidebar-title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.sidebar-add-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.sidebar-add-button:hover {
+  background-color: #45a049;
+}
+
+.sidebar-search {
+  margin-bottom: 10px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
 }
 
 .sidebar-menu {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 .sidebar-item {
-  margin-bottom: 15px;
-}
-
-.sidebar-button {
-  background-color: #007bff;
-  border: none;
-  color: white;
-  padding: 10px 15px;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.sidebar-button:hover {
-  background-color: #0056b3;
-}
-
-.notes-list {
-  margin-top: 20px;
-}
-
-.note-item {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  align-items: center;
+  padding: 8px;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
-  background-color: #fff;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
 }
 
-.note-item:hover {
-  background-color: #f0f0f0;
+.note-info {
+  display: flex;
+  align-items: center;
 }
 
-.note-item button {
-  background: transparent;
+.note-title {
+  flex: 1;
+}
+
+.note-delete-button {
+  background: none;
   border: none;
-  color: #007bff;
+  color: #ff4d4d;
+  font-size: 1.2em;
   cursor: pointer;
+}
+
+.note-delete-button:hover {
+  color: #ff1a1a;
 }
