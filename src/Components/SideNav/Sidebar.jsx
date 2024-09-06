@@ -1,4 +1,3 @@
-// src/Components/Sidebar.js
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import { NoteContext } from '../../context/NoteContext';
 import 'dragula/dist/dragula.css';
@@ -9,18 +8,19 @@ const Sidebar = ({ onNoteSelect }) => {
   const { notes, addNote, deleteNote, reorderNotes } = useContext(NoteContext);
   const [searchTerm, setSearchTerm] = useState('');
   const sidebarRef = useRef(null);
+  const notesListRef = useRef(null); // Ref for the list of notes
 
   useEffect(() => {
-    if (!sidebarRef.current) return;
+    if (!notesListRef.current) return;
 
-    // Initialize Dragula
-    const drake = dragula([sidebarRef.current], {
+    // Initialize Dragula only on the notes list
+    const drake = dragula([notesListRef.current], {
       moves: (el) => el.classList.contains('draggable'),
-      accepts: (el, target) => target === sidebarRef.current,
+      accepts: (el, target) => target === notesListRef.current,
     });
 
     drake.on('drop', () => {
-      const reorderedNotes = Array.from(sidebarRef.current.children).map(li => {
+      const reorderedNotes = Array.from(notesListRef.current.children).map(li => {
         const noteId = parseInt(li.getAttribute('data-id'), 10);
         return notes.find(note => note.id === noteId);
       }).filter(Boolean);
@@ -71,7 +71,7 @@ const Sidebar = ({ onNoteSelect }) => {
           className="search-input"
         />
       </div>
-      <ul className="sidebar-menu">
+      <ul className="sidebar-menu" ref={notesListRef}>
         {filteredNotes.length > 0 ? (
           filteredNotes.map(note => (
             <li
@@ -82,7 +82,7 @@ const Sidebar = ({ onNoteSelect }) => {
               <div className="note-info">
                 <span
                   onClick={() => handleNoteSelect(note.id)}
-                  className="note-title handle"
+                  className="note-title"
                 >
                   {note.title}
                 </span>
