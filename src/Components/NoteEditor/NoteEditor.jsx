@@ -1,4 +1,3 @@
-// src/Components/NoteEditor.js
 import React, { useState, useEffect, useContext } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -43,14 +42,16 @@ const NoteEditor = ({ noteId }) => {
   };
 
   const exportToPDF = () => {
-    const element = document.getElementById('note-content');
-    const opt = {
+    const contentElement = document.getElementById('note-content');
+    const options = {
       margin: 1,
       filename: `${title || 'note'}.pdf`,
       html2canvas: { scale: 2 },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
-    html2pdf().from(element).set(opt).save();
+    
+    // Generate PDF from the content element
+    html2pdf().from(contentElement).set(options).save();
   };
 
   const handleDrawingAdded = (dataURL) => {
@@ -67,7 +68,7 @@ const NoteEditor = ({ noteId }) => {
         className="note-title-input"
         placeholder="Note Title"
       />
-      <div id="note-content">
+      <div id="note-content" className="note-content">
         <CKEditor
           editor={ClassicEditor}
           data={editorData}

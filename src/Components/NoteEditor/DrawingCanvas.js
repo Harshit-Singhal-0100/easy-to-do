@@ -1,5 +1,5 @@
 // src/Components/DrawingCanvas.js
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Stage, Layer, Line } from 'react-konva';
 
 const DrawingCanvas = ({ backgroundColor, onDrawingAdded }) => {
@@ -10,6 +10,26 @@ const DrawingCanvas = ({ backgroundColor, onDrawingAdded }) => {
   const [brushSize, setBrushSize] = useState(5);
   const [eraser, setEraser] = useState(false);
   const stageRef = useRef(null);
+  const canvasContainerRef = useRef(null);
+
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(() => {
+      if (stageRef.current && canvasContainerRef.current) {
+        stageRef.current.width(canvasContainerRef.current.offsetWidth);
+        stageRef.current.height(window.innerHeight - 200); // Adjust as needed
+      }
+    });
+
+    if (canvasContainerRef.current) {
+      resizeObserver.observe(canvasContainerRef.current);
+    }
+
+    return () => {
+      if (canvasContainerRef.current) {
+        resizeObserver.unobserve(canvasContainerRef.current);
+      }
+    };
+  }, []);
 
   const handleMouseDown = (e) => {
     setDrawing(true);
@@ -67,21 +87,21 @@ const DrawingCanvas = ({ backgroundColor, onDrawingAdded }) => {
   const addDrawing = () => {
     if (stageRef.current) {
       const dataURL = stageRef.current.toDataURL({ pixelRatio: 3 });
-      onDrawingAdded(dataURL);  // Pass the drawing data URL to the parent component
-      clearCanvas();  // Clear the canvas after saving the drawing
+      onDrawingAdded(dataURL); // Pass the drawing data URL to the parent component
+      clearCanvas(); // Clear the canvas after saving the drawing
     }
   };
 
   return (
-    <div className="drawing-canvas">
+    <div className="drawing-canvas-container" ref={canvasContainerRef}>
       <Stage
-        width={window.innerWidth}
-        height={window.innerHeight - 200}
+        width={window.innerWidth} // Will be adjusted by ResizeObserver
+        height={window.innerHeight - 200} // Adjust as needed
         ref={stageRef}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-        style={{ backgroundColor: backgroundColor }}
+        style={{ backgroundColor }}
       >
         <Layer>
           {lines.map((line, index) => (

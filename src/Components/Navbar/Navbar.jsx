@@ -15,8 +15,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-title">Easy to Notes</div>
         <div className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
-          <button className="nav-button login-button">Login</button>
-          <button className="nav-button signup-button">Sign Up</button>
+          {/* Login and Sign Up buttons removed */}
           <button className="search-toggle" onClick={toggleMenu}>
             <span className="search-icon"></span>
           </button>

@@ -1,13 +1,31 @@
-// src/Components/FabricCanvas.js
-
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { Stage, Layer, Line } from 'react-konva';
 
-const FabricCanvas = ({ width, height, onDrawingAdd }) => {
+const FabricCanvas = ({ onDrawingAdd }) => {
   const [isDrawing, setIsDrawing] = useState(false);
   const [shapes, setShapes] = useState([]);
   const [currentShape, setCurrentShape] = useState(null);
   const stageRef = useRef(null);
+  const [dimensions, setDimensions] = useState({ width: 600, height: 400 });
+
+  // Set dimensions based on container size
+  const updateDimensions = useCallback(() => {
+    const container = stageRef.current?.container();
+    if (container) {
+      setDimensions({
+        width: container.clientWidth,
+        height: container.clientHeight
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => {
+      window.removeEventListener('resize', updateDimensions);
+    };
+  }, [updateDimensions]);
 
   const handleMouseDown = (e) => {
     setIsDrawing(true);
@@ -47,10 +65,10 @@ const FabricCanvas = ({ width, height, onDrawingAdd }) => {
   };
 
   return (
-    <div>
+    <div className="fabric-canvas-container">
       <Stage
-        width={width}
-        height={height}
+        width={dimensions.width}
+        height={dimensions.height}
         ref={stageRef}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
