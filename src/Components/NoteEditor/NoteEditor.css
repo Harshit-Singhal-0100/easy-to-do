@@ -1,3 +1,5 @@
+/* src/Components/NoteEditor.css */
+
 /* General Styles */
 .note-editor {
   display: flex;
@@ -29,7 +31,8 @@
 .clear-button,
 .add-drawing-button,
 .remove-drawing-button,
-.enhance-button {
+.enhance-button,
+.export-pdf-button {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -43,7 +46,8 @@
 .clear-button:hover,
 .add-drawing-button:hover,
 .remove-drawing-button:hover,
-.enhance-button:hover {
+.enhance-button:hover,
+.export-pdf-button:hover {
   background-color: #0056b3;
   transform: scale(1.05);
 }
@@ -52,7 +56,8 @@
 .clear-button:disabled,
 .add-drawing-button:disabled,
 .remove-drawing-button:disabled,
-.enhance-button:disabled {
+.enhance-button:disabled,
+.export-pdf-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
@@ -134,154 +139,183 @@
   justify-content: space-between;
   margin-top: 20px;
 }
-.editor-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
 
-.add-drawing-button,
-.save-button,
-.clear-button,
-.undo-button,
-.redo-button {
-  margin-right: 10px;
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.undo-button,
-.redo-button {
-  background-color: #6c757d;
+.editor-buttons button {
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
-}
-.ql-size-10px {
-  font-size: 10px;
-}
-
-.ql-size-12px {
-  font-size: 12px;
-}
-
-.ql-size-14px {
-  font-size: 14px;
-}
-
-.ql-size-16px {
+  padding: 10px 20px;
   font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.ql-size-18px {
+.editor-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.editor-buttons .clear-button {
+  background-color: #dc3545;
+}
+
+.editor-buttons .clear-button:hover {
+  background-color: #c82333;
+}
+
+/* Note Content */
+.note-content {
+  padding: 10px;
+}
+
+/* Placeholder for empty note selection */
+.empty-note {
+  text-align: center;
   font-size: 18px;
+  color: #666;
 }
+/* src/Components/NoteEditor.css */
 
-.ql-size-24px {
-  font-size: 24px;
-}
-
-.ql-size-32px {
-  font-size: 32px;
-}
-
-.ql-size-48px {
-  font-size: 48px;
-}
-
-.ql-size-72px {
-  font-size: 72px;
-}
-/* NoteEditor.css */
-.ql-size-10px { font-size: 10px; }
-.ql-size-12px { font-size: 12px; }
-.ql-size-14px { font-size: 14px; }
-.ql-size-16px { font-size: 16px; }
-.ql-size-18px { font-size: 18px; }
-.ql-size-24px { font-size: 24px; }
-.ql-size-32px { font-size: 32px; }
-.ql-size-48px { font-size: 48px; }
-.ql-size-72px { font-size: 72px; }
-/* NoteEditor.css */
-
-/* Container for the note editor */
+/* General Styles */
 .note-editor {
   display: flex;
   flex-direction: column;
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Title input styling */
 .note-title-input {
-  width: 100%;
-  padding: 10px;
   font-size: 24px;
-  font-weight: bold;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 12px;
   margin-bottom: 20px;
-  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
 }
 
-/* ReactQuill editor styling */
-.ReactQuill {
-  border: 1px solid #ddd;
+.note-title-input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Buttons */
+.save-button,
+.clear-button,
+.add-drawing-button,
+.remove-drawing-button,
+.enhance-button,
+.export-pdf-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
   border-radius: 4px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Toolbar customization */
-.ql-toolbar {
-  border: 1px solid #ddd;
-  border-radius: 4px 4px 0 0;
-  background-color: #fff;
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+.save-button:hover,
+.clear-button:hover,
+.add-drawing-button:hover,
+.remove-drawing-button:hover,
+.enhance-button:hover,
+.export-pdf-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 
-/* Drawing options section styling */
+.save-button:disabled,
+.clear-button:disabled,
+.add-drawing-button:disabled,
+.remove-drawing-button:disabled,
+.enhance-button:disabled,
+.export-pdf-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Drawing Options */
 .drawing-options {
-  margin: 20px 0;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 15px;
 }
 
 .drawing-options label {
-  font-weight: bold;
   margin-right: 10px;
+  font-weight: bold;
 }
 
-.drawing-options input[type="color"],
-.drawing-options input[type="number"] {
-  padding: 5px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
+.drawing-options input[type="color"] {
+  margin-right: 15px;
+  padding: 0;
+  border: none;
+  height: 30px;
 }
 
-/* Drawable area styling */
+/* Drawable Area */
 .drawable-area {
-  margin-bottom: 20px;
-  text-align: center;
+  margin: 20px 0;
+  position: relative;
 }
 
-.drawable-area .react-sketch-canvas {
+.react-sketch-canvas {
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
-/* Editor buttons styling */
+/* Drawings Gallery */
+.drawings-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.drawing-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.drawing-item img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+}
+
+.drawing-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.remove-drawing-button,
+.enhance-button {
+  background-color: #dc3545;
+}
+
+.remove-drawing-button:hover,
+.enhance-button:hover {
+  background-color: #c82333;
+}
+
+.remove-drawing-button:disabled,
+.enhance-button:disabled {
+  background-color: #ccc;
+}
+
+/* Editor Buttons */
 .editor-buttons {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .editor-buttons button {
@@ -307,59 +341,95 @@
   background-color: #c82333;
 }
 
-/* Drawings gallery styling */
-.drawings-gallery {
+/* Note Content */
+.note-content {
+  padding: 10px;
+}
+
+/* Placeholder for empty note selection */
+.empty-note {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+/* Add these styles to your existing CSS file */
+.editor-buttons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
-.drawing-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.editor-buttons button,
+.editor-buttons input[type="color"] {
+  margin-right: 10px;
 }
 
-.drawing-item img {
-  max-width: 100%;
-  max-height: 200px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.drawing-buttons {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.drawing-buttons button {
-  background-color: #28a745;
+.editor-buttons button {
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 5px 10px;
-  font-size: 14px;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.drawing-buttons button:hover {
+.editor-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.editor-buttons .export-pdf-button {
+  background-color: #28a745;
+}
+
+.editor-buttons .export-pdf-button:hover {
   background-color: #218838;
 }
+/* src/Components/NoteEditor/DrawingCanvas.css */
 
-.drawing-buttons .remove-drawing-button {
-  background-color: #dc3545;
+/* Drawing Canvas */
+.drawing-canvas {
+  position: relative;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.drawing-buttons .remove-drawing-button:hover {
-  background-color: #c82333;
+.drawing-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
 }
 
-/* Placeholder for empty note selection */
-.note-editor .empty-note {
-  text-align: center;
-  font-size: 18px;
-  color: #666;
+.drawing-controls button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.drawing-controls button:hover {
+  background-color: #0056b3;
+}
+
+.drawing-controls input[type="color"] {
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.drawing-controls input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
 }

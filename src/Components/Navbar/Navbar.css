@@ -1,11 +1,25 @@
+/* Navbar.css */
+
 .navbar {
-  background-color: #333;
-  color: white;
-  padding: 10px 20px;
+  background: linear-gradient(90deg, #1e3c72, #2a5298); /* Gradient background */
+  color: #fff;
+  padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background 0.3s ease, padding 0.3s ease;
+}
+
+/* Adjust the body to prevent content overlap */
+body {
+  margin: 0;
+  padding-top: 80px; /* Adjust this based on navbar height */
 }
 
 .navbar-container {
@@ -15,6 +29,7 @@
   max-width: 1200px;
   margin: 0 auto;
   justify-content: space-between;
+  position: relative;
 }
 
 .navbar-logo {
@@ -22,47 +37,152 @@
 }
 
 .logo-img {
-  height: 40px;
+  height: 50px;
+  width: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.1); /* Logo scaling effect on hover */
+  filter: brightness(1.2); /* Slightly brighten logo on hover */
 }
 
 .navbar-title {
   flex: 2;
-  font-size: 1.5em;
+  font-size: 2em;
   text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
 }
 
 .navbar-links {
   flex: 1;
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  align-items: center;
+  gap: 15px;
+  position: relative;
 }
 
 .nav-button {
   background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 4px;
-  padding: 10px 15px;
+  border-radius: 25px; /* Pill shape */
+  padding: 12px 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1em;
 }
 
 .nav-button:hover {
   background-color: #45a049;
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.login-button {
+  background-color: #007bff;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.signup-button {
+  background-color: #28a745;
+}
+
+.signup-button:hover {
+  background-color: #218838;
+}
+
+.search-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  position: relative;
+}
+
+.search-icon {
+  width: 30px;
+  height: 30px;
+  background: url('./logo.jpg') no-repeat center center; /* Ensure the correct path to your search icon */
+  background-size: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.search-bar {
+  position: absolute;
+  top: 60px; /* Adjust based on the height of the navbar */
+  right: 20px;
+  display: none;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.search-bar.active {
+  display: flex;
+}
+
+.search-input {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.search-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
 }
 
 @media (max-width: 768px) {
   .navbar-title {
-    font-size: 1.2em;
+    font-size: 1.5em;
   }
 
   .navbar-links {
     flex-direction: column;
-    gap: 5px;
+    align-items: center;
+    gap: 10px;
+    position: static;
+    background: #1e3c72;
+    padding: 10px;
+    width: 100%;
+    transition: max-height 0.3s ease;
+  }
+
+  .search-bar {
+    position: static;
+    display: block;
+  }
+
+  .search-bar.active {
+    display: none;
   }
 
   .nav-button {
     width: 100%;
+    text-align: center;
+  }
+
+  .search-toggle {
+    display: block;
   }
 }

@@ -1,17 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
+import logo from './logo.jpg'; // Importing the logo
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo">
-          <img src="/path-to-your-logo.png" alt="Logo" className="logo-img" />
+          <img src={logo} alt="Logo" className="logo-img" /> {/* Using the imported logo */}
         </div>
-        <div className="navbar-title">My App</div>
-        <div className="navbar-links">
-          <button className="nav-button">Login</button>
-          <button className="nav-button">Sign Up</button>
+        <div className="navbar-title">Easy to Notes</div>
+        <div className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
+          <button className="nav-button login-button">Login</button>
+          <button className="nav-button signup-button">Sign Up</button>
+          <button className="search-toggle" onClick={toggleMenu}>
+            <span className="search-icon"></span>
+          </button>
+        </div>
+        <div className={`search-bar ${isMenuOpen ? 'active' : ''}`}>
+          <input type="text" placeholder="Search..." className="search-input" />
+          <button className="search-button">Search</button>
         </div>
       </div>
     </nav>
