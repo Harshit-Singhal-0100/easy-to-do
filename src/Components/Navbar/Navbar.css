@@ -1,13 +1,12 @@
-/* Navbar.css */
-
+/* General Navbar Styles */
 .navbar {
   background: linear-gradient(90deg, #1e3c72, #2a5298); /* Gradient background */
   color: #fff;
   padding: 15px 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
   position: fixed;
   top: 0;
   left: 0;
@@ -19,9 +18,10 @@
 /* Adjust the body to prevent content overlap */
 body {
   margin: 0;
-  padding-top: 80px; /* Adjust this based on navbar height */
+  padding-top: 70px; /* Adjust this based on navbar height */
 }
 
+/* Navbar Container Styles */
 .navbar-container {
   display: flex;
   align-items: center;
@@ -29,11 +29,13 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   justify-content: space-between;
-  position: relative;
+  flex-wrap: wrap; /* Allow items to wrap on small screens */
 }
 
+/* Navbar Logo Styles */
 .navbar-logo {
-  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .logo-img {
@@ -47,142 +49,94 @@ body {
   filter: brightness(1.2); /* Slightly brighten logo on hover */
 }
 
+/* Navbar Title Styles */
 .navbar-title {
-  flex: 2;
-  font-size: 2em;
+  font-size: 1.8em;
   text-align: center;
   font-weight: bold;
   letter-spacing: 1px;
   transition: color 0.3s ease;
+  flex: 1; /* Ensures the title is centered */
+  margin: 0 20px; /* Add margin to prevent title from sticking to edges */
 }
 
+/* Navbar Links Styles */
 .navbar-links {
-  flex: 1;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
   gap: 15px;
-  position: relative;
 }
 
-.nav-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 25px; /* Pill shape */
-  padding: 12px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+.nav-link {
+  color: #fff;
+  text-decoration: none;
   font-size: 1em;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.nav-button:hover {
-  background-color: #45a049;
+.nav-link:hover {
+  color: #f1c40f; /* Highlight color on hover */
   transform: translateY(-2px); /* Lift effect on hover */
 }
 
-.login-button {
-  background-color: #007bff;
-}
-
-.login-button:hover {
-  background-color: #0056b3;
-}
-
-.signup-button {
-  background-color: #28a745;
-}
-
-.signup-button:hover {
-  background-color: #218838;
-}
-
-.search-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  position: relative;
-}
-
-.search-icon {
-  width: 30px;
-  height: 30px;
-  background: url('./logo.jpg') no-repeat center center; /* Ensure the correct path to your search icon */
-  background-size: 20px;
-  transition: opacity 0.3s ease;
-}
-
-.search-bar {
-  position: absolute;
-  top: 60px; /* Adjust based on the height of the navbar */
-  right: 20px;
-  display: none;
-  background: white;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.search-bar.active {
-  display: flex;
-}
-
-.search-input {
-  width: 200px;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-right: 10px;
-}
-
-.search-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9em;
-  transition: background-color 0.3s ease;
-}
-
-.search-button:hover {
-  background-color: #0056b3;
-}
-
+/* Responsive Styles */
 @media (max-width: 768px) {
   .navbar-title {
     font-size: 1.5em;
+    margin: 0; /* Remove side margins for smaller screens */
   }
 
   .navbar-links {
+    display: none; /* Hide links by default on small screens */
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    position: static;
+    width: 100%;
     background: #1e3c72;
+    position: absolute;
+    top: 70px; /* Position below the navbar */
+    left: 0;
+    z-index: 999;
+  }
+
+  .navbar-links.active {
+    display: flex; /* Show links when active */
+  }
+
+  .nav-link {
     padding: 10px;
-    width: 100%;
-    transition: max-height 0.3s ease;
-  }
-
-  .search-bar {
-    position: static;
-    display: block;
-  }
-
-  .search-bar.active {
-    display: none;
-  }
-
-  .nav-button {
-    width: 100%;
     text-align: center;
+    font-size: 1.2em;
   }
 
-  .search-toggle {
+  .navbar-container {
+    flex-direction: column; /* Stack logo and title vertically */
+    align-items: center;
+  }
+
+  .navbar-logo {
+    margin-bottom: 10px; /* Space between logo and title */
+  }
+}
+
+/* Mobile Menu Button Styles */
+.mobile-menu-button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-button {
     display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 1001;
+  }
+
+  .mobile-menu-button img {
+    width: 30px;
+    height: auto;
   }
 }

@@ -1,4 +1,3 @@
-// src/Components/DrawingCanvas.js
 import React, { useState, useRef, useEffect } from 'react';
 import { Stage, Layer, Line } from 'react-konva';
 
@@ -11,25 +10,36 @@ const DrawingCanvas = ({ backgroundColor, onDrawingAdded }) => {
   const [eraser, setEraser] = useState(false);
   const stageRef = useRef(null);
   const canvasContainerRef = useRef(null);
+  
+  // Debounce function
+  const debounce = (func, wait) => {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  };
+
+  // Debounced resize handler
+  const handleResize = debounce(() => {
+    if (stageRef.current && canvasContainerRef.current) {
+      stageRef.current.width(canvasContainerRef.current.offsetWidth);
+      stageRef.current.height(window.innerHeight - 200); // Adjust as needed
+    }
+  }, 200); // Debounce time in milliseconds
 
   useEffect(() => {
-    const resizeObserver = new ResizeObserver(() => {
-      if (stageRef.current && canvasContainerRef.current) {
-        stageRef.current.width(canvasContainerRef.current.offsetWidth);
-        stageRef.current.height(window.innerHeight - 200); // Adjust as needed
-      }
-    });
+    const resizeObserver = new ResizeObserver(handleResize);
 
     if (canvasContainerRef.current) {
       resizeObserver.observe(canvasContainerRef.current);
     }
 
+    // Clean up observer
     return () => {
-      if (canvasContainerRef.current) {
-        resizeObserver.unobserve(canvasContainerRef.current);
-      }
+      resizeObserver.disconnect();
     };
-  }, []);
+  }, [handleResize]);
 
   const handleMouseDown = (e) => {
     setDrawing(true);
